@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "omgnice",
+    "password": "omgice@123",
+    "database": "todo",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "omgnice",
+    "password": "omgnice@123", 
+    "database": "todo",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "omgnice",
+    "password": "omgnice@123",
+    "database": "todo",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}

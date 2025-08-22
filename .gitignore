@@ -1,0 +1,5 @@
+# Thư mục cài đặt VS Code
+.vscode/
+
+# File cấu hình môi trường
+backend/.env

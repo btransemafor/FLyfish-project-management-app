@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login Demo</title>
+</head>
+<body>
+  <h1>Login Form</h1>
+  <form id="login-form">
+    <input type="text" id="email" placeholder="Email" required><br><br>
+    <input type="password" id="password" placeholder="Password" required><br><br>
+    <button type="submit">Login</button>
+  </form>
+
+  <script>
+    document.getElementById('login-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      fetch('http://localhost:5000/api/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email, password })
+      })
+      .then(response => {
+        if (!response.ok) {
+          if (response.status === 401) throw new Error('Invalid email or password');
+          if (response.status === 500) throw new Error('Server error, please try again later');
+          throw new Error(`Login failed: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log('Success:', data);
+        alert('Login success: ' + JSON.stringify(data));
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert('Login failed: ' + error.message);
+      });
+    });
+  </script>
+</body>
+</html>
