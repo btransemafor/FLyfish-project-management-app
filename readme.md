@@ -1,6 +1,6 @@
-# Tên Dự Án
+# Tên Dự Án: **FlyFish – Project Management App**
 
-**FlyFish – Project Management App** – Backend Node.js + PostgreSQL, Frontend Flutter theo Clean Architecture, hỗ trợ realtime comments & notifications.
+**FlyFish – Project Management App** – Ứng dụng di động giúp quản lý dự án, trong mỗi dự án sẽ có nhiều nhiệm vụ, có thể thêm các thành viên vào dự án, phân công nhiệm vụ cho thành viên. 
 
 ---
 
@@ -21,15 +21,20 @@
 * Kiến trúc modular, dễ mở rộng, maintainable.
 * Realtime notifications & comments 
 * Database indexing cải thiện tốc độ truy vấn.
-* Giao điện thân thiện
+* Giao diện thân thiện
+* Quản lý phiên với token: 
+  * access Token để gửi kèm khi yêu cầu truy cập vào các tài nguyên có thời gian time to live ngắn hơn so hơn refresh token, 
+  * Refresh token giúp người dùng vẫn duy trì trang thái login trong thời gian dài 
 
 ---
 
 ### Tech Stack
 
-* **Backend:** Node.js, PostgreSQL
-* **Frontend:** Flutter, Bloc, goRouter
+* **Backend:** Node.js, PostgreSQL, Model Sequelize
+* **Frontend:** Flutter, Bloc, goRouter, DIO, getIt
 * **Realtime:** Socket.IO, Streams
+
+* **Email Service**: Khi tạo task mới, khi có người bình luận trong task, trạng thái dự án thay đổi, ...
 
 ---
 
