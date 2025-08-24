@@ -71,14 +71,6 @@ void _handleLogout() async {
       // Sử dụng pushNamedAndClearStack để clear toàn bộ navigation stack
       context.pushReplacementNamed('signInScreen');
 
-      // Hoặc nếu bạn muốn clear toàn bộ stack:
-      // while (context.canPop()) {
-      //   context.pop();
-      // }
-      // context.pushReplacementNamed('signInScreen');
-
-      // Hiển thị thông báo logout
-      // _showLogoutSnackBar(context);
     }
   } catch (e) {
     print('Error during logout handling: $e');
@@ -87,12 +79,6 @@ void _handleLogout() async {
 
 void _clearBlocStates() {
   try {
-    // Reset các BLoC về initial state nếu cần
-    // Ví dụ:
-    // di.getIt<HomeBloc>().add(ResetHomeData());
-    // di.getIt<ProjectBloc>().add(ResetProjects());
-    // di.getIt<TaskBloc>().add(ResetTasks());
-
     print('BLoC states cleared');
   } catch (e) {
     print('Error clearing BLoC states: $e');
@@ -124,15 +110,15 @@ void main() async {
       await path_provider.getApplicationDocumentsDirectory();
   Hive.init(appDocumentDirectory.path);
 
-  //  Nếu dùng Hive với custom object (UserModel) thì cần register adapter
   Hive.registerAdapter(UserModelAdapter());
 
-  //  Mở box đúng cách
+  //  Mở box 
   final Box<UserModel> userBox =
       await Hive.openBox<UserModel>(HiveBoxes.userBox);
   final Box<Map<String, String>> rememberAccountBox =
       await Hive.openBox(HiveBoxes.rememberAccountBox);
-  // In setupDependencies (e.g., injection.dart)
+
+  // In setupDependencies 
   print('GetIt instance in setupDependencies: ${di.getIt}');
   await di.setupDependencies();
   await di.testCommentBlocRegistration();
@@ -260,10 +246,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
 
   Future<void> _verifyTokenWithServer() async {
     try {
-      // Make a simple API call to verify token
       final dioClient = di.getIt<DioClient>();
-      // Ví dụ call một endpoint đơn giản
-      // await dioClient.dio.get('/auth/verify');
     } catch (e) {
       print('Token verification failed: $e');
       di.getIt<AuthStateManager>().setLoggedOut();
